@@ -1,37 +1,44 @@
 <template>
   <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+    <div v-for=" in 6" class="foam" v-if="selectedCreamer.name !== 'None'" :style="{ backgroundColor: selectedCreamer.color }"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-type Prop = {
-  name: string;
-};
-type Creamer = {
-  name: string;
-  color: string;
-};
-const Creamers: Creamer[] = [
-  {
-    name: "Milk",
-    color: "AliceBlue",
-  },
-  {
-    name: "Cream",
-    color: "#F5F5DC",
-  },
-  {
-    name: "Half & Half",
-    color: "#FFFACD",
-  },
-];
+  import { computed } from "vue";
+  type Prop = {
+    name: string;
+  };
 
-const props = withDefaults(defineProps<Prop>(), {
-  name: "Milk",
-});
+  type Creamer = {
+    name: string;
+    color: string;
+  };
+  const Creamers: Creamer[] = [
+    {
+      name: "Milk",
+      color: "AliceBlue",
+    },
+    {
+      name: "Cream",
+      color: "#F5F5DC",
+    },
+    {
+      name: "Half & Half",
+      color: "#FFFACD",
+    },
+  ];
+
+  const props = withDefaults(defineProps<Prop>(), {
+    name: "Milk",
+  });
+
+  const selectedCreamer = computed(() => {
+    const selected = Creamers.find(creamer => creamer.name === props.name);
+    return selected ? selected : { name: 'None', color: 'white' };
+  });
 </script>
+
 <style lang="scss" scoped>
 .froth {
   overflow: visible;

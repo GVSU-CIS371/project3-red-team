@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Beverage :isIced="currentTemp === 'Cold'" />
+    
+    <Beverage :isIced="currentTemp === 'Cold'" :creamer="currCream" :beverage="currBase" :syrup="currSyrup"/>
     <ul>
       <li>
           <b>Temperature: </b>
@@ -19,7 +20,7 @@
       </li>
       <li>
         <b>Creamer: </b>
-        <template v-for="x in creamers" :key="creamer">
+        <template v-for="x in creamers" :key="x">
           <label>
               <input
                 type="radio"
@@ -34,7 +35,7 @@
       </li>
       <li>
         <b>Syrup: </b>
-        <template v-for="x in syrups" :key="syrup">
+        <template v-for="x in syrups" :key="x">
           <label>
               <input
                 type="radio"
@@ -49,7 +50,7 @@
       </li>
       <li>
         <b>Beverage Base: </b>
-        <template v-for="x in baseBevs" :key="baseBev">
+        <template v-for="x in baseBevs" :key="x">
           <label>
               <input
                 type="radio"
@@ -69,9 +70,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Beverage from "./components/Beverage.vue";
-import Creamer from "./components/Creamer.vue";
-import Syrup from "./components/Syrup.vue";
-import Base from "./components/Base.vue";
 // Define reactive data
 const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);

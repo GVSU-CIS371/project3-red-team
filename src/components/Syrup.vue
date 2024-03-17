@@ -1,5 +1,5 @@
 <template>
-  <div class="syrup"></div>
+  <div class="syrup" v-if="selectedSyrup.name !== 'None'" :style="{backgroundColor: selectedSyrup.color}"></div>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +29,11 @@ const Syrups: Syrup[] = [
 const props = withDefaults(defineProps<Prop>(), {
   name: "Vanilla",
 });
+
+const selectedSyrup = computed(() => {
+    const selected = Syrups.find(syrup => syrup.name === props.name);
+    return selected ? selected : { name: 'None', color: 'white' };
+  });
 </script>
 <style lang="scss" scoped>
 .syrup {
@@ -36,6 +41,7 @@ const props = withDefaults(defineProps<Prop>(), {
   position: relative;
   width: 100%;
   height: 20%;
+  background-color: #FFEFD5;
   animation: pour-tea 2s 1s forwards;
   z-index: 2;
 }
