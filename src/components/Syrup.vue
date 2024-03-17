@@ -44,5 +44,7 @@ const selectedSyrup = computed(() => {
   background-color: #FFEFD5;
   animation: pour-tea 2s 1s forwards;
   z-index: 2;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #DAA520 10px, #DAA520 20px),
+  
 }
 </style>
