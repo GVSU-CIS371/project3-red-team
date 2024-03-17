@@ -1,5 +1,5 @@
 <template>
-  <div class="syrup" v-if="selectedSyrup.name !== 'None'" :style="{backgroundColor: selectedSyrup.color}"></div>
+  <div class="syrup" v-if="selectedSyrup.name !== 'None'" :style="{backgroundColor: selectedSyrup.color, backgroundImage: isHazelnut ? hazelnutGradient : '' }"></div>
 </template>
 
 <script setup lang="ts">
@@ -34,7 +34,13 @@ const selectedSyrup = computed(() => {
     const selected = Syrups.find(syrup => syrup.name === props.name);
     return selected ? selected : { name: 'None', color: 'white' };
   });
+
+const isHazelnut = computed(() => selectedSyrup.value.name === 'Hazelnut');
+
+const hazelnutGradient = 'repeating-linear-gradient(45deg, transparent, transparent 10px, #DAA520 10px, #DAA520 20px)';
+
 </script>
+
 <style lang="scss" scoped>
 .syrup {
   transform: translateY(400%);
@@ -44,7 +50,7 @@ const selectedSyrup = computed(() => {
   background-color: #FFEFD5;
   animation: pour-tea 2s 1s forwards;
   z-index: 2;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #DAA520 10px, #DAA520 20px),
-  
+
+
 }
 </style>
