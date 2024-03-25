@@ -63,6 +63,21 @@
             </label>
         </template>
       </li>
+      <li>
+        <b>Save Drink: </b>
+        <input 
+          type="text"
+          name="saveTxt"
+          id="saveTxt"
+        />
+        <input 
+          type="button"
+          name="saveBtn"
+          id="saveBtn"
+          value="Save!"
+
+        />
+      </li>
     </ul>
   </div>
 </template>
@@ -70,7 +85,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Beverage from "./components/Beverage.vue";
-// Define reactive data
+//This is the code for the stores.
+//import { useStore } from './store.ts';
+//const store = useStore();
+
 const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);
 const syrups = ref(["None", "Vanilla", "Caramel", "Hazelnut"]);
