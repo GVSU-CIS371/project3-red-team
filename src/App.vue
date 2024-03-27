@@ -1,102 +1,79 @@
 <template>
-  <div>
-    
+  <div id="app">
     <Beverage :isIced="currentTemp === 'Cold'" :creamer="currCream" :beverage="currBase" :syrup="currSyrup"/>
-    <ul>
-      <li>
-          <b>Temperature: </b>
-          <template v-for="temp in temps" :key="temp">
-            <label>
-              <input
-                type="radio"
-                name="temperature"
-                :id="`r${temp}`"
-                :value="temp"
-                v-model="currentTemp"
-              />
-              {{ temp }}
-            </label>
-          </template>
-      </li>
-      <li>
-        <b>Creamer: </b>
-        <template v-for="x in creamers" :key="x">
-          <label>
-              <input
-                type="radio"
-                name="creamer"
-                :id="`r${x}`"
-                :value="x"
-                v-model="currCream"
-              />
-              {{ x }}
-            </label>
-        </template>
-      </li>
-      <li>
-        <b>Syrup: </b>
-        <template v-for="x in syrups" :key="x">
-          <label>
-              <input
-                type="radio"
-                name="Syrup"
-                :id="`r${x}`"
-                :value="x"
-                v-model="currSyrup"
-              />
-              {{ x }}
-            </label>
-        </template>
-      </li>
-      <li>
-        <b>Beverage Base: </b>
-        <template v-for="x in baseBevs" :key="x">
-          <label>
-              <input
-                type="radio"
-                name="Beverage Base"
-                :id="`r${x}`"
-                :value="x"
-                v-model="currBase"
-              />
-              {{ x }}
-            </label>
-        </template>
-      </li>
-      <li>
-        <b>Save Drink: </b>
-        <input 
-          type="text"
-          name="saveTxt"
-          id="saveTxt"
-        />
-        <input 
-          type="button"
-          name="saveBtn"
-          id="saveBtn"
-          value="Save!"
+    
+    <div id="selectorContainer">
+      <AppDropdown buttonText="Temperature" class="contentButton" :selected="currentTemp" @update:selected="updateValue">
+        <AppDropdownContent class="box" :items="temps" :selected="currentTemp" @update:selected="updateValue" />
+      </AppDropdown>
+      
+      <AppDropdown buttonText="Creamer" class="contentButton" :selected="currCream" @update:selected="updateValue">
+        <AppDropdownContent class="box" :items="creamers" :selected="currCream" @update:selected="updateValue" />
+      </AppDropdown>
 
-        />
-      </li>
-    </ul>
+      <AppDropdown buttonText="Syrup" class="contentButton" :selected="currSyrup" @update:selected="updateValue">
+        <AppDropdownContent class="box" :items="syrups" :selected="currSyrup" @update:selected="updateValue" />
+      </AppDropdown>
+
+      <AppDropdown buttonText="Beverage Base" class="contentButton" :selected="currBase" @update:selected="updateValue">
+        <AppDropdownContent class="box" :items="baseBevs" :selected="currBase" @update:selected="updateValue" />
+      </AppDropdown>
+    </div>
+    
+    <b>Save Drink: </b>
+    <input 
+      type="text"
+      name="saveTxt"
+      id="saveTxt"
+    />
+    <input 
+      type="button"
+      name="saveBtn"
+      id="saveBtn"
+      value="Save!"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import Beverage from "./components/Beverage.vue";
+import AppDropdown from "./components/AppDropdown.vue";
+import AppDropdownContent from "./components/AppDropdownContent.vue";
 //This is the code for the stores.
 //import { useStore } from './store.ts';
 //const store = useStore();
 
-const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);
 const syrups = ref(["None", "Vanilla", "Caramel", "Hazelnut"]);
 const baseBevs = ref(["Coffee", "Green Tea", "Black Tea"]);
-const currentTemp = ref("Hot");
 const currCream = ref("None");
 const currSyrup = ref("None");
 const currBase = ref("Coffee")
+
+const temps = ref(["Hot", "Cold"]);
+const currentTemp = ref("Hot");
+
+/* function updateTemp(newValue: string) {
+  currentTemp.value = newValue;
+}
+
+function updateCream(newValue : string){
+  currCream.value = newValue;
+} */
+
+function updateValue(newValue:string, type:string){
+  switch(type){
+    case "cream": currCream.value = newValue;
+    break;
+    case "syrup": currSyrup.value = newValue;
+    break;
+    case "base": currBase.value = newValue;
+    break;
+    case "temp": currentTemp.value = newValue;
+    break;
+  }
+}
+
 </script>
 
 <style lang="scss">
@@ -113,4 +90,34 @@ html {
 ul {
   list-style: none;
 }
+
+#selectorContainer{
+  display:flex;
+  justify-content: space-evenly;
+  background-color: white;
+  height: 20vh;
+  width: 50vw;
+}
+
+.contentButton{
+  position: relative;
+  top: 0;
+  margin: 0px 5px 0px 5px;
+  width: 25%;
+}
+
+/* .itemButton{
+
+
+} */
+
+.box{
+  margin: 2px;
+  padding: 2px;
+  background-color: tan;
+  border-radius: 2px;
+  width:90%;
+}
+
+
 </style>
