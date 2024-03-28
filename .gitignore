@@ -132,3 +132,6 @@ dist
 
 
 backup
+src/components/broken_components/AppDropdownContent.vue
+src/components/broken_components/AppDropdownContentEmpty.vue
+src/components/broken_components/AppDropdownItem.vue
