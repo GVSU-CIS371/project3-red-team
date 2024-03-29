@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
 
 interface Recipe{
+  Name: String;
   temp: string;
-  creamer: string;
+  cream: string;
   syrup: string;
   base: string;
 }

@@ -36,6 +36,7 @@
             </label>
           </div>
         </div>
+        
           
       </AppDropdown>
 
@@ -72,7 +73,14 @@
         </div>
       </AppDropdown>
     </div>
-    <div id="saveButton">
+
+    <!-- Your form to add a new recipe -->
+    <form @submit.prevent="addNewRecipe">
+      <input type="text" v-model="newRecipeName" placeholder="Enter recipe name" />
+      <button type="submit">Add Recipe</button>
+    </form>
+    
+    <!-- <div id="saveButton">
       <b>Save Drink: </b>
       <input 
         type="text"
@@ -84,7 +92,14 @@
         name="saveBtn"
         id="saveBtn"
         value="Save!"/>
-    </div>
+    </div> -->
+    <div>
+    <!-- Display recipes from the store -->
+    <ul>
+      <h2> HELLO</h2>
+      <li v-for="(recipe, index) in store.recipes" :key="index">{{ recipe }}</li>
+    </ul>
+  </div>
     
   </div>
 </template>
@@ -97,6 +112,17 @@ import AppDropdown from "./components/AppDropdown.vue";
 import { useStore } from './store.ts';
 const store = useStore();
 console.log(store.recipes);
+
+interface Recipe{
+  Name: String;
+  temp: string;
+  cream: string;
+  syrup: string;
+  base: string;
+}
+
+const recipe = ref()
+
 
 // export default{
 //   setup() {
