@@ -87,7 +87,7 @@
     <div>
     <ul>
       <h2> Recipes </h2>
-      <li v-for="(recipe, index) in store.recipes" :key="index">{{ recipe }}</li>
+      <li v-for="(recipe, index) in store.recipes" :key="index">{{ recipe.name}}   {{ recipe.temp }}   {{ recipe.cream }}   {{recipe.syrup}}   {{recipe.base}} </li>
     </ul>
     </div>
     
@@ -99,17 +99,6 @@ import { ref } from "vue";
 import Beverage from "./components/Beverage.vue";
 import AppDropdown from "./components/AppDropdown.vue";
 
-//Adding Recipes to store
-import { useStore } from './store.ts';
-const store = useStore();
-const newRecipeName = ref('');
-const addNewRecipe = () => {
-  if (newRecipeName.value.trim() !== '') {
-    store.addRecipe(newRecipeName.value.trim(), currentTemp, currCream, currSyrup. currBase);
-    newRecipeName.value = '';
-  }
-};
-
 const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);
 const syrups = ref(["None", "Vanilla", "Caramel", "Hazelnut"]);
@@ -118,6 +107,17 @@ const currentTemp = ref("Hot");
 const currCream = ref("None");
 const currSyrup = ref("None");
 const currBase = ref("Coffee")
+
+//Adding Recipes to store
+import { useStore } from './store.ts';
+const store = useStore();
+const newRecipeName = ref('');
+const addNewRecipe = () => {
+  if (newRecipeName.value.trim() !== '') {
+    store.addRecipe(newRecipeName.value.trim(), currentTemp.value, currCream.value, currSyrup.value, currBase.value);
+    newRecipeName.value = '';
+  }
+};
 
 </script>
 
