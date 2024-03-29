@@ -21,23 +21,22 @@
         </div>
           
       </AppDropdown>
-
-      <AppDropdown buttonText="Beverage Base" class="contentButton">
+     
+     
+      <AppDropdown buttonText="Creamer" class="contentButton">
         <div class="contentBox">
-          <div v-for="base in baseBevs" :key="base" class="itemBox">
+          <div v-for="cream in creamers" :key="cream" class="itemBox">
             <label>
               <input
                 type="radio"
-                name="beverage_base"
-                :value="base"
-                v-model="currBase"
+                name="cream"
+                :value="cream"
+                v-model="currCream"
               />
-              {{ base }}
+              {{ cream }}
             </label>
           </div>
         </div>
-        
-          
       </AppDropdown>
 
       <AppDropdown buttonText="Syrup" class="contentButton">
@@ -57,22 +56,25 @@
           
       </AppDropdown>
 
-      <AppDropdown buttonText="Creamer" class="contentButton">
+
+     
+      <AppDropdown buttonText="Beverage Base" class="contentButton">
         <div class="contentBox">
-          <div v-for="cream in creamers" :key="cream" class="itemBox">
+          <div v-for="base in baseBevs" :key="base" class="itemBox">
             <label>
               <input
                 type="radio"
-                name="cream"
-                :value="cream"
-                v-model="currCream"
+                name="beverage_base"
+                :value="base"
+                v-model="currBase"
               />
-              {{ cream }}
+              {{ base }}
             </label>
           </div>
         </div>
+        
+          
       </AppDropdown>
-      
     </div>
     
     <div id="saveButton">
@@ -160,7 +162,7 @@ ul {
 
 #selectorContainer{
   display:flex;
-  justify-content: cente;
+  justify-content: center;
   height: 13vh;
   width: 45vw;
 }
