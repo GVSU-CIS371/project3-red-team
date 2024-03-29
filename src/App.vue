@@ -87,7 +87,10 @@
     <div>
     <ul>
       <h2> Recipes </h2>
-      <li v-for="(recipe, index) in store.recipes" :key="index">{{ recipe.name}}   {{ recipe.temp }}   {{ recipe.cream }}   {{recipe.syrup}}   {{recipe.base}} </li>
+      <li v-for="(recipe, index) in store.recipes" :key="index">
+      <button @click="setCurrentValues(recipe)" :class="{ 'recipe-button': true, 'selected': isSelected(recipe) }"></button>
+      {{ recipe.name}}
+      </li>
     </ul>
     </div>
     
@@ -112,11 +115,22 @@ const currBase = ref("Coffee")
 import { useStore } from './store.ts';
 const store = useStore();
 const newRecipeName = ref('');
+const selectedRecipe = ref('');
 const addNewRecipe = () => {
   if (newRecipeName.value.trim() !== '') {
     store.addRecipe(newRecipeName.value.trim(), currentTemp.value, currCream.value, currSyrup.value, currBase.value);
     newRecipeName.value = '';
   }
+};
+const setCurrentValues = (recipe) => {
+  currentTemp.value = recipe.temp;
+  currCream.value = recipe.cream;
+  currSyrup.value = recipe.syrup;
+  currBase.value = recipe.base;
+  selectedRecipe.value = recipe;
+};
+const isSelected = (recipe) => {
+  return selectedRecipe.value === recipe;
 };
 
 </script>
@@ -150,6 +164,18 @@ ul {
   margin: 0px 5px 0px 5px;
   width: 25%;
   
+}
+
+.recipe-button {
+  width: 15px;
+  height: 15px;
+  background-color: #956f5a;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: black;
 }
 
 #saveButton{
