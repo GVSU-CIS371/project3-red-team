@@ -84,7 +84,7 @@
         v-model="newRecipeName"
        placeholder=""
       />
-      <button @click="addNewRecipe">Make Beverage</button>
+      <button @click="addNewRecipe">🥛 Make Beverage</button>
     </div>
 
     <div>
@@ -180,7 +180,6 @@ ul {
   margin: 0;
   width: 33.33%; 
   box-sizing: border-box; 
-  float: left; 
 }
 
 .recipe-button {
@@ -223,6 +222,30 @@ ul {
   width:90%;
   text-align: left;
 }
+
+button{
+  background-color: orange;
+  border-radius: 3px;
+  width: auto;
+  height: 25px;
+  border: none;
+  font-size: 12px;
+  font-family: Arial;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+}
+
+button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  filter: brightness(103%);
+}
+
+.button{
+  background-color: cadetblue;
+}
+
+
 
 
 </style>
