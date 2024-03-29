@@ -73,33 +73,23 @@
         </div>
       </AppDropdown>
     </div>
-
-    <!-- Your form to add a new recipe -->
-    <form @submit.prevent="addNewRecipe">
-      <input type="text" v-model="newRecipeName" placeholder="Enter recipe name" />
-      <button type="submit">Add Recipe</button>
-    </form>
     
-    <!-- <div id="saveButton">
+    <div id="saveButton">
       <b>Save Drink: </b>
       <input 
         type="text"
-        name="saveTxt"
-        id="saveTxt"
+        v-model="newRecipeName"
+        placeholder="Enter name"
       />
-      <input 
-        type="button"
-        name="saveBtn"
-        id="saveBtn"
-        value="Save!"/>
-    </div> -->
+      <button @click="addNewRecipe">Save</button>
+    </div>
+
     <div>
-    <!-- Display recipes from the store -->
     <ul>
-      <h2> HELLO</h2>
+      <h2> Recipes </h2>
       <li v-for="(recipe, index) in store.recipes" :key="index">{{ recipe }}</li>
     </ul>
-  </div>
+    </div>
     
   </div>
 </template>
@@ -108,29 +98,17 @@
 import { ref } from "vue";
 import Beverage from "./components/Beverage.vue";
 import AppDropdown from "./components/AppDropdown.vue";
-//This is the code for the stores.
+
+//Adding Recipes to store
 import { useStore } from './store.ts';
 const store = useStore();
-console.log(store.recipes);
-
-interface Recipe{
-  Name: String;
-  temp: string;
-  cream: string;
-  syrup: string;
-  base: string;
-}
-
-const recipe = ref()
-
-
-// export default{
-//   setup() {
-//     const store = useStore()
-
-//     return{Beverage}
-//   }
-// }
+const newRecipeName = ref('');
+const addNewRecipe = () => {
+  if (newRecipeName.value.trim() !== '') {
+    store.addRecipe(newRecipeName.value.trim(), currentTemp, currCream, currSyrup. currBase);
+    newRecipeName.value = '';
+  }
+};
 
 const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 interface Recipe{
-  Name: String;
+  name: string;
   temp: string;
   cream: string;
   syrup: string;
@@ -48,7 +48,14 @@ export const useStore = defineStore('beverageStore',{
   }),
   actions: {
     // Action to add a new recipe
-    addRecipe(recipe: Recipe) {
+    addRecipe(name: string, temp: string, cream: string, syrup: string, base: string) {
+      const recipe: Recipe = {
+        name: name,
+        temp: temp, 
+        cream: cream,
+        syrup: syrup,
+        base: base
+      }
       this.recipes.push(recipe);
     },
   }
