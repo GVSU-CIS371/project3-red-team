@@ -95,9 +95,16 @@ import Beverage from "./components/Beverage.vue";
 import AppDropdown from "./components/AppDropdown.vue";
 //This is the code for the stores.
 import { useStore } from './store.ts';
-
-
 const store = useStore();
+console.log(store.recipes);
+
+// export default{
+//   setup() {
+//     const store = useStore()
+
+//     return{Beverage}
+//   }
+// }
 
 const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);

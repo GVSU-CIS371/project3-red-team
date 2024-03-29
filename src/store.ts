@@ -7,8 +7,9 @@ interface Recipe{
   base: string;
 }
 
-// //This is an eample based on the website and the professor's notes. Need to do more research into creating the Store
-// export const useCoffeeStore = defineStore('CoffeeStore', {
+
+//This is an eample based on the website and the professor's notes. Need to do more research into creating the Store
+// export const useStore = defineStore('CoffeeStore', {
 //     state: () => {
 //       return {
 //         category: 'Beverage Base',
@@ -21,8 +22,26 @@ interface Recipe{
 //     },
 //   });
 
-export const useStore = defineStore({
-  id: 'beverage',
+
+// // Test 2
+// export const useStore = defineStore({
+//   id: 'beverage',
+//   state: () => ({
+//     recipes: [] as Recipe[] // Array to store user's beverage selections
+//   }),
+//   actions: {
+//     // Action to add a new recipe
+//     addRecipe(recipe: Recipe) {
+//       this.recipes.push(recipe);
+//     },
+//     // Action to remove a recipe by index
+//     removeRecipe(index: number) {
+//       this.recipes.splice(index, 1);
+//     }
+//   }
+// });
+
+export const useStore = defineStore('beverageStore',{
   state: () => ({
     recipes: [] as Recipe[] // Array to store user's beverage selections
   }),
