@@ -111,7 +111,7 @@ const currCream = ref("None");
 const currSyrup = ref("None");
 const currBase = ref("Coffee")
 
-//Adding Recipes to store
+//Pinia Store
 import { useStore } from './store.ts';
 const store = useStore();
 const newRecipeName = ref('');
@@ -154,7 +154,7 @@ ul {
   display:flex;
   justify-content: space-evenly;
   background-color: white;
-  height: 10vh;
+  height: 13vh;
   width: 50vw;
 }
 
