@@ -154,7 +154,7 @@ ul {
   display:flex;
   justify-content: space-evenly;
   background-color: white;
-  height: 20vh;
+  height: 10vh;
   width: 50vw;
 }
 
