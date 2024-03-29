@@ -72,16 +72,17 @@
           </div>
         </div>
       </AppDropdown>
+      
     </div>
     
     <div id="saveButton">
-      <b>Save Drink: </b>
+      <b></b>
       <input 
         type="text"
         v-model="newRecipeName"
-        placeholder="Enter name"
+       placeholder=""
       />
-      <button @click="addNewRecipe">Save</button>
+      <button @click="addNewRecipe">Make Beverage</button>
     </div>
 
     <div>
@@ -159,25 +160,32 @@ ul {
 
 #selectorContainer{
   display:flex;
-  justify-content: space-evenly;
-  background-color: white;
+  justify-content: cente;
   height: 13vh;
-  width: 50vw;
+  width: 45vw;
 }
-
-.contentButton{
+// Old content button css
+// .contentButton{
+//   position: relative;
+//   top: 0;
+//   margin: 0px 5px 0px 5px;
+//   width: 25%;
+  
+// }
+.contentButton {
   position: relative;
   top: 0;
-  margin: 0px 5px 0px 5px;
-  width: 25%;
-  
+  margin: 0;
+  width: 33.33%; 
+  box-sizing: border-box; 
+  float: left; 
 }
 
 .recipe-button {
   width: 15px;
   height: 15px;
   background-color: #956f5a;
-  border: 2px solid black;
+  border: 10px solid black;
   cursor: pointer;
 }
 
@@ -189,7 +197,7 @@ ul {
   display: flex;
   margin: 10px 0 0 0;
   width: 50vw;
-  background-color: whitesmoke;
+  // background-color: whitesmoke;
   justify-content: center;
 }
 
@@ -199,7 +207,7 @@ ul {
   justify-items: center;
   flex-direction:column;
   margin: 0px, 2px 2px 2px;
-  background-color: tan;
+  background-color: white;
   border-radius: 3px;
   width:100%;
 }
@@ -208,7 +216,7 @@ ul {
   display: flex;
   margin: 3px auto 3px auto;
   padding: 2px;
-  background-color: antiquewhite;
+  background-color: white;
   border-radius: 2px;
   width:90%;
   text-align: left;
