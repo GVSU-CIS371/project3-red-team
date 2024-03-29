@@ -118,8 +118,15 @@ const newRecipeName = ref('');
 const selectedRecipe = ref('');
 const addNewRecipe = () => {
   if (newRecipeName.value.trim() !== '') {
-    store.addRecipe(newRecipeName.value.trim(), currentTemp.value, currCream.value, currSyrup.value, currBase.value);
-    newRecipeName.value = '';
+    store.$patch((state: any) => {
+      state.recipes.push({
+        name:newRecipeName.value.trim(), 
+        temp: currentTemp.value,
+        cream: currCream.value,
+        syrup: currSyrup.value,
+        base: currBase.value,
+      });
+    });
   }
 };
 const setCurrentValues = (recipe) => {
