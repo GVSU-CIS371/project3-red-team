@@ -23,7 +23,7 @@
       </AppDropdown>
      
      
-      <AppDropdown buttonText="Creamer" class="contentButton">
+      <AppDropdown buttonText="Creamer" class="contentButton2">
         <div class="contentBox">
           <div v-for="cream in creamers" :key="cream" class="itemBox">
             <label>
@@ -58,7 +58,7 @@
 
 
      
-      <AppDropdown buttonText="Beverage Base" class="contentButton">
+      <AppDropdown buttonText="Beverage Base" class="contentButton2">
         <div class="contentBox">
           <div v-for="base in baseBevs" :key="base" class="itemBox">
             <label>
@@ -82,14 +82,14 @@
       <input 
         type="text"
         v-model="newRecipeName"
-       placeholder=""
+       placeholder="Name"
       />
       <button @click="addNewRecipe">🥛 Make Beverage</button>
     </div>
 
     <div>
     <ul>
-      <h2> Recipes </h2>
+      <h2></h2>
       <li v-for="(recipe, index) in store.recipes" :key="index">
       <button @click="setCurrentValues(recipe)" :class="{ 'recipe-button': true, 'selected': isSelected(recipe) }"></button>
       {{ recipe.name}}
@@ -163,8 +163,9 @@ ul {
 #selectorContainer{
   display:flex;
   justify-content: center;
-  height: 13vh;
+  height: 5vh;
   width: 45vw;
+  padding-left: 65px
 }
 // Old content button css
 // .contentButton{
@@ -174,21 +175,27 @@ ul {
 //   width: 25%;
   
 // }
-.contentButton {
+.contentButton, .contentButton2{
   position: relative;
   top: 0;
-  margin: 0;
-  width: 33.33%; 
+  margin:  0;
+  width: 200px; 
   box-sizing: border-box; 
 }
 
+
+
 .recipe-button {
-  width: 15px;
-  height: 15px;
-  background-color: #956f5a;
-  border: 10px solid black;
+  width: 25px;
+  height: 25px;
+  background-color: gray;
   cursor: pointer;
+  position: relative;
+  margin-bottom: 5px;
+  left: -5px;
+  padding-top: 17px;
 }
+
 
 .selected {
   background-color: black;
@@ -196,10 +203,30 @@ ul {
 
 #saveButton{
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 10px 0 0 0;
   width: 50vw;
   // background-color: whitesmoke;
   justify-content: center;
+
+}
+
+#saveButton input[type="text"]{
+  border:1px solid #855c45;
+  width: 300px;
+  height: 50px;
+  padding: 5px;
+  margin: 0px;
+  margin-bottom: 10px;
+  margin-right: 485px;
+  background-color: #855c45;
+  font-size: 25px;
+  outline: none;
+}
+
+#saveButton input[type="text"]:focus {
+  background-color: white;
 }
 
 .contentBox{
@@ -210,7 +237,7 @@ ul {
   margin: 0px, 2px 2px 2px;
   background-color: white;
   border-radius: 3px;
-  width:100%;
+  width:auto;
 }
 
 .itemBox{
@@ -224,28 +251,47 @@ ul {
 }
 
 button{
-  background-color: orange;
+  background-color: #fb8c00;
   border-radius: 3px;
-  width: auto;
-  height: 25px;
+  width:200px;
+  height: 45px;
   border: none;
-  font-size: 12px;
+  font-size: 20px;
   font-family: Arial;
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   
 }
 
+
+button:active {
+  background-color: #ffc107; /* Lighter color when clicked */
+}
+
+
 button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   filter: brightness(103%);
 }
 
-.button{
-  background-color: cadetblue;
+.contentButton button {
+    background-color: #48a9a6;
+    font-size: 25pxpx;
 }
 
+.contentButton2 button {
+    background-color: #4caf50;
+    font-size: 25px
+}
+h2{
+  margin-left: 400px;
+}
 
-
-
+li{
+  text-align: center;
+  margin-right: 750px;
+  margin-bottom: 20px;
+  font-size: 23px;
+  font-family: arial;
+}
 </style>
