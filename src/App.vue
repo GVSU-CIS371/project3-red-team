@@ -132,14 +132,14 @@ const addNewRecipe = () => {
     });
   }
 };
-const setCurrentValues = (recipe) => {
+const setCurrentValues = (recipe:any) => {
   currentTemp.value = recipe.temp;
   currCream.value = recipe.cream;
   currSyrup.value = recipe.syrup;
   currBase.value = recipe.base;
   selectedRecipe.value = recipe;
 };
-const isSelected = (recipe) => {
+const isSelected = (recipe:any) => {
   return selectedRecipe.value === recipe;
 };
 
